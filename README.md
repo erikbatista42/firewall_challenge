@@ -8,3 +8,9 @@ When I was coming up with  a solution for the problem, I  initially considered s
 
 **Any refinements or optimizations that you would’ve implemented if you had more time**
 I used the built-in ipaddress module to help me create the ipranges instead of creating it from scratch. If I had more time, I'd explicitly define the type of the parameter in the method signatures to make the code easier to understand.
+
+**Team that I'm interested in**
+I am particularly interested in the Policy team, but would love the opportunity to work with any of the listed teams:
+1) Policy
+2) Platform
+3) Data
