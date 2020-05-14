@@ -65,31 +65,3 @@ class Firewall():
                 if packet.is_direction_valid(direction) is packet.is_protocol_valid(protocol) is packet.is_port_valid(port) is packet.is_ip_adress_valid(ip_adress) is True:
                     return True
             return False # packet doesn't match any rules...blocked!
-
-    
-if __name__ == "__main__":
-    path = "rules.csv"
-    firewall = Firewall(path)
-    # tests
-    print("Running tests...")
-    assert(firewall.accept_packet("inbound", "tcp", 80, "192.168.1.2") == True) # matches first rule
-    print("Passed test 1")
-    assert(firewall.accept_packet("inbound", "udp", 53, "192.168.2.1") == True) # matches third rule
-    print("Passed test 2")
-    assert(firewall.accept_packet("outbound", "tcp", 10234, "192.168.10.11") == True) # matches second rule
-    print("Passed test 3")
-    assert(firewall.accept_packet("inbound", "tcp", 81, "192.168.1.2") == False) # No match
-    print("Passed test 4")
-    assert(firewall.accept_packet("inbound", "udp", 24, "52.12.48.92") == False) # No match
-    print("Passed test 5")
-    print("Running extra tests...")
-    assert(firewall.accept_packet("outbound", "tcp", 20000, "192.168.10.11") == True) # matches second rule
-    print("Passed test 6")
-    assert(firewall.accept_packet("inbound", "udp", 57, "192.168.1.1") == False) # No match
-    print("Passed test 7")
-    assert(firewall.accept_packet("outbound", "udp", 1000, "52.12.48.92") == True) # matches first rule (retest)
-    print("Passed test 8")
-    assert(firewall.accept_packet("outbound", "udp", 1500, "52.12.48.93") == False) # No match
-    print("Passed test 9")
-    assert(firewall.accept_packet("inbound", "tcp", 800, "192.168.1.2") == False) # No match
-    print("Passed test 10")
